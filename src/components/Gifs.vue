@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from "vue"
+import { ref, watch, onMounted, onUnmounted, watchPostEffect } from "vue"
 import _ from "lodash"
 
 const props = defineProps<{gifs: Array<string>}>()
@@ -16,11 +16,12 @@ onUnmounted(() => {
 })
 
 watch(items, () => {
-  setTimeout(resizeAllGridItems, 100) // can be buggy TODO, make better solution for this
+  resizeAllGridItems() // This is i think bad solution
 })
 watch(props, () => {
-  setTimeout(resizeAllGridItems, 100) // can be buggy TODO, make better solution for this
-})
+  if (items.value)
+    resizeAllGridItems() // Same
+}, {deep: true})
 
 /* Masonry javascript mechanism */
 const resizeGridItem = (item: HTMLDivElement) => {
