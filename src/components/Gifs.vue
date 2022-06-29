@@ -16,11 +16,10 @@ onUnmounted(() => {
 })
 
 watch(items, () => {
-  resizeAllGridItems() // This is i think bad solution
+  setTimeout(resizeAllGridItems, 100) // can be buggy TODO, make better solution for this
 })
 watch(props, () => {
-  if (items.value)
-    resizeAllGridItems() // Same
+  setTimeout(resizeAllGridItems, 100) // can be buggy TODO, make better solution for this
 }, {deep: true})
 
 /* Masonry javascript mechanism */
