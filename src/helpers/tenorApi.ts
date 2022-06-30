@@ -25,7 +25,7 @@ class TenorApi {
     return await response.json()
   }
 }
-const apiKey = ""
+const apiKey = "AIzaSyBnSXAasihVw1rdaJwKWBzWp1m0KXFIql4"
 const clientKey = "gif_dashboard"
 const tenorApi = new TenorApi(apiKey, clientKey)
 
